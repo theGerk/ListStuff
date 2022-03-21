@@ -16,15 +16,15 @@ void parseDir(const std::filesystem::path& path, std::vector<std::filesystem::pa
 		{
 			// std::cout << "In directory: " << file << '\n';
 			childrenFiles.emplace_back();
-			childrenThreads.emplace_back([&childrenFiles, file](){
+			// childrenThreads.emplace_back([&childrenFiles, file](){
 				parseDir(file, childrenFiles.back());
-			});
+			// });
 		}
 	}
 
 	for(size_t i = 0; i < childrenThreads.size(); i++)
 	{
-		childrenThreads[i].join();
+		// childrenThreads[i].join();
 		files.insert(files.end(), childrenFiles[i].begin(), childrenFiles[i].end());
 	}
 }
